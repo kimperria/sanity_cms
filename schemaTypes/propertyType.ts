@@ -22,20 +22,40 @@ export const propertyType = defineType({
     defineField({
       name: 'image',
       type: 'image',
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative Text',
+          description: 'Important for SEO and accessibility',
+          validation: (rule) => {
+            return rule.custom((alt, context) => {
+              if ((context.document?.image as any)?.asset?._ref && !alt) {
+                return 'Required'
+              }
+              return true
+            })
+          },
+        },
+      ],
     }),
     defineField({
       name: 'size_in_hectares',
       type: 'number',
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'description',
       type: 'array',
+      description: 'Provide property information',
       of: [{type: 'block'}],
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'price',
       description: 'Estimate cost in kenyan shillings',
       type: 'number',
+      initialValue: 0,
     }),
     defineField({
       name: 'owner',

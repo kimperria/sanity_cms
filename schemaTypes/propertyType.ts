@@ -15,7 +15,10 @@ export const propertyType = defineType({
     defineField({
       name: 'slug',
       type: 'slug',
-      options: {source: 'name'},
+      options: {
+        source: 'name',
+        isUnique: (value, context) => context.defaultIsUnique(value, context),
+      },
       validation: (rule) => rule.required().error('Required to generate a page on the webite'),
       hidden: ({document}) => !document?.name,
     }),
@@ -50,6 +53,10 @@ export const propertyType = defineType({
       description: 'Provide property information',
       of: [{type: 'block'}],
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'location',
+      type: 'string',
     }),
     defineField({
       name: 'price',

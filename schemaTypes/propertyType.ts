@@ -39,7 +39,7 @@ export const propertyType = defineType({
     }),
     defineField({
       name: 'owner',
-      description: 'This could a caretaker, landlord or any other contact person',
+      description: 'This could be a caretaker, landlord or any other contact person',
       type: 'reference',
       to: [{type: 'owner'}],
     }),

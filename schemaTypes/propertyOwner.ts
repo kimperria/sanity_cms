@@ -31,4 +31,7 @@ export const propertyOwnerType = defineType({
       type: 'string',
     }),
   ],
+  preview: {
+    select: {title: 'client_name', subtitle: 'phone_number'},
+  },
 })

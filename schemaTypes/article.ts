@@ -34,7 +34,7 @@ export const article = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'exerpt',
+      name: 'excerpt',
       title: 'Excerpt',
       type: 'text',
     }),
@@ -71,6 +71,21 @@ export const article = defineType({
       name: 'author',
       title: 'Author',
       type: 'string',
+    }),
+    defineField({
+      name: 'category',
+      title: 'Category',
+      type: 'string',
+      description: 'Optional category for the article (e.g., Technology, Health, etc.)',
+    }),
+    defineField({
+      name: 'pdfFile',
+      title: 'PDF File',
+      type: 'file',
+      options: {
+        accept: 'application/pdf',
+      },
+      description: 'Attach a PDF file related to this article',
     }),
   ],
 })
